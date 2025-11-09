@@ -70,7 +70,7 @@ header>.cta,header>button[type="button"]{
 .hero{position:absolute;inset:0;background-color:#343a3c;background-size:cover;background-position:center;z-index:0;filter:saturate(0.95) contrast(0.95)}
 #hero::after{content:'';position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 40%,rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.6) 100%);z-index:1;pointer-events:none}
 #hero>h1,#hero>h2,#hero>p,#hero>button{position:relative;z-index:2;max-width:1000px;margin:0 auto}
-#hero h1,#hero h2{color:var(--accent);font-size:2.1rem;margin-bottom:8px}
+#hero h1,#hero h2{;font-size:2.1rem;margin-bottom:8px}
 #hero p{color:var(--muted);font-size:1.05rem;max-width:820px;margin:12px auto}
 #hero button{margin-top:16px;padding:12px 20px;border-radius:999px;font-weight:800}
 
@@ -451,4 +451,209 @@ ol li{margin-left:15px!important}
   .cookie-banner{flex-direction:column;gap:8px;align-items:stretch}
   .cookie-banner .accept{width:100%}
   header{padding:6px 10px!important}
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   RESPONSYWNOŚĆ - DO WKLEJENIA
+   (telefony / małe ekrany)
+   ========================= */
+
+/* Duże smartfony / małe tablety (np. poziome telefony, 600–720px) */
+@media (max-width: 720px) {
+  /* Hero - przełamanie layoutu na jedną kolumnę */
+  #hero .hero-inner { flex-direction: column; align-items: stretch; padding: 18px 14px; gap: 12px; }
+  #hero .hero-left, #hero .hero-right { flex: 1 1 100%; max-width:100%; }
+
+  /* Layout rezerwacji -> jedna kolumna */
+  .rezerwacja-wrapper { grid-template-columns: 1fr; gap: 18px; padding: 0 12px; }
+
+  /* Kalendarz i sloty przewijane poziomo/pionowo */
+  .calendar-panel { overflow-x: auto; padding-bottom: 12px; }
+  .calendar-days, .calendar-weekdays, .calendar-headers, .calendar-columns {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(160px,1fr);
+    overflow-x: auto;
+    gap: 10px;
+  }
+
+  /* Formularz i mapy */
+  #bookingForm { padding: 12px; }
+  .map-wrapper { height: 280px; }
+
+  /* Nawigacja */
+  .nav-toggle { display: inline-block !important; }
+  nav.nav-menu { display: none !important; }
+
+  /* Przyciski full width na mniejszych ekranach */
+  #payBtn, a.cta1, a.btn { width: 100% !important; padding-left: 14px !important; padding-right: 14px !important; }
+
+  /* Cookie */
+  .cookie-banner { left: 12px; right: 12px; bottom: 12px; justify-content: center; }
+
+  /* Tabela cennika - kartki zamiast tabeli */
+  #cennik table, #cennik thead, #cennik tbody, #cennik th, #cennik td, #cennik tr {
+    display: block;
+  }
+  #cennik tr { margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: rgba(255,255,255,0.015); padding: 10px; }
+  #cennik td { padding: 10px 0; border-bottom: none; }
+  #cennik td::before { display: block; font-weight: 700; margin-bottom: 6px; color: var(--muted); }
+
+  /* Header kompaktowy */
+  header { padding: 10px 16px !important; gap: 10px !important; }
+  #logo { height: 44px !important; }
+
+  /* Tekst - lekko mniejszy */
+  body { font-size: 15px !important; }
+}
+
+/* Standardowy telefon (pionowo) */
+@media (max-width: 520px) {
+  /* Hero: większe dostosowania */
+  #hero h1 { font-size: 1.4rem !important; text-align: left !important; }
+  #hero p { font-size: 1rem !important; text-align: left !important; }
+  #hero button, #hero .cta { width: 100% !important; padding: 12px 14px !important; }
+
+  /* Header: ukryj CTA duże */
+  header > .cta, header > .cta1 { display: none !important; }
+
+  /* Calendar / slots - większe targety */
+  .slot, .calendar-day, .calendar-header button { min-height: 48px !important; padding: 10px !important; }
+  #slotsContainer, .slots-grid { max-height: 300px; }
+
+  /* Mapy i opinie */
+  .map-wrapper { height: 240px; }
+  #opinie-uczestnikow article { padding: 12px; }
+}
+
+/* Bardzo małe telefony (np. 360px szer.) */
+@media (max-width: 360px) {
+  #hero h1 { font-size: 1.2rem !important; }
+  #logo { height: 36px !important; }
+  .calendar-weekdays, .calendar-days, .calendar-headers, .calendar-columns {
+    grid-auto-columns: minmax(72px, 1fr) !important;
+  }
+  #slotsContainer, .slots-grid { max-height: 200px !important; }
+
+  /* Cookie banner pionowo i pełna szerokość przycisku */
+  .cookie-banner { flex-direction: column; gap: 8px; align-items: stretch; }
+  .cookie-banner .accept { width: 100%; }
+
+  /* Header - mniejsze paddings */
+  header { padding: 6px 10px !important; }
+}
+
+/* Prefer reduced motion for mobile as well */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* Prosta klasa do otwierania mobilnego menu (użyj .open na nav.nav-menu) */
+@media (max-width: 720px) {
+  nav.nav-menu.open {
+    display: flex !important;
+    position: absolute;
+    top: 56px;
+    left: 12px;
+    right: 12px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.45));
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    z-index: 140;
+  }
+  nav.nav-menu.open a { padding: 12px; border-radius: 8px; }
+}
+@media (max-width: 768px) {
+  #hero {
+    flex-direction: column;
+    text-align: left; /* albo center, jak chcesz */
+  }
+
+  /* przycisk na pełną szerokość w mobile */
+  #hero .cta {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* -> Zamień poprzednie mobile-reguły #cennik na to (wkleić na końcu arkusza) */
+@media (max-width: 720px) {
+  /* Usuń wymuszoną szerokość tabeli, żeby nie wymuszała poziomego scrolla */
+  #cennik table {
+    width: 100%;
+    min-width: 0 !important;
+    border-radius: 12px;
+    background: transparent;
+  }
+
+  /* Każdy wiersz = karta (blok) */
+  #cennik thead { display: none; }
+  #cennik tbody, #cennik tr { display: block; width: 100%; }
+  #cennik tbody tr {
+    background: var(--card);
+    border-radius: calc(var(--radius) - 2px);
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.02);
+    overflow: visible;
+  }
+
+  /* Każda komórka jako osobna linia: etykieta nad wartością */
+  #cennik td {
+    display: block;
+    padding: 8px 0;
+    border-bottom: none;
+    word-break: break-word;
+    line-height: 1.35;
+  }
+
+  /* Etykieta: używa data-label gdy jest, albo fallback nth-of-type */
+  #cennik td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  /* fallback - jeśli nie masz data-label w HTML */
+  #cennik td:not([data-label]):nth-of-type(1)::before{ content: "Czas trwania"; }
+  #cennik td:not([data-label]):nth-of-type(2)::before{ content: "Cena"; }
+  #cennik td:not([data-label]):nth-of-type(3)::before{ content: "Zawiera"; }
+  #cennik td:not([data-label]):nth-of-type(4)::before{ content: "Dla kogo"; }
+
+  /* Wartość: pełna szerokość, czytelne zawijanie */
+  #cennik td .value {
+    display: block;
+    color: var(--text);
+    font-weight: 600;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* Szczególne wyróżnienie kolumny 'Zawiera' */
+  #cennik tr td:nth-child(3) .value,
+  #cennik td[data-label="Zawiera"] .value {
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  /* Drobne dostosowania dla bardzo małych ekranów */
+  @media (max-width: 360px) {
+    #cennik tbody tr { padding: 10px; }
+    #cennik td::before { font-size: 0.95rem; }
+    #cennik td .value { font-size: 0.95rem; }
+  }
 }
