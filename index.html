@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Symulator Lokomotywy Vectron UTK SIM</title>
+    <meta name="description" content="Zasiądź za sterami lokomotywy Vectron UTK SIM. Rezerwacje online, profesjonalni instruktorzy. Katowice">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <a href="#hero" class="logo-link" aria-label="Strona główna">
+      <img src="assets/image/logo.png" alt="KG Rail - Symulator Vectron" id="logo" loading="lazy">
+    </a>
+
+    <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false">☰</button>
+    
+    <nav class="nav-menu" role="navigation" aria-label="Główne menu">
+      <a href="#o-symulatorze">O Symulatorze</a>
+      <a href="#rezerwacja">Rezerwacja</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="cta1" href="login.html">Zaloguj/Zarejestruj</a>
+  </header>
+  
+  <main id="maincontent">
+    <section id="hero" aria-labelledby="hero-title">
+      <div class="hero" role="img" aria-label="Kabina symulatora Vectron" style="background-image:url('assets/image/LI8A1632\ kopia.jpg');"></div>
+      <h1 id="hero-title">Zasiądź za sterami lokomotywy Vectron!</h1>
+      <p>Spełnij dziecięce marzenie i poczuj się jak prawdziwy maszynista!</p>
+      <p>Zarezerwuj swoją jazdę na profesjonalnym symulatorze Vectron UTK SIM, wykorzystywanym do szkolenia zawodowych maszynistów.</p>
+      <button type="button" onclick="document.querySelector('#rezerwacja').scrollIntoView({behavior:'smooth'})" class="cta">Zarezerwuj jazdę</button>
+    </section>
+
+    <section id="o-symulatorze">
+      <h2>Profesjonalny symulator lokomotywy - teraz dostępny dla każdego!</h2>
+      <p>Symulator lokomotywy <b>Vectron UTK SIM</b> to w pełni profesjonalne narzędzie szkoleniowe, na co dzień wykorzystywane do nauki i egzaminowania maszynistów. Teraz ty możesz zasiąść za sterami i poprowadzić pociąg po rzeczywistych trasach kolejnowych!<br><br></p>
+      <p>Nie musisz mieć żadnego doświadczenia - nasi instruktorzy, zawodowi maszyniści, zadbają o Twoje bezpieczeństwo i komfort.To niezapomniane przyżycie, które zachwyci każdego miłośnika kolei, techniki i mocnych wrażeń.</p>
+    </section>
+
+    <section id="cennik">
+      <table>
+        <thead>
+          <tr>
+            <th>Czas trwania</th>
+            <th>Cena</th>
+            <th>Zawiera</th>
+            <th>Dla kogo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>30 minut</td>
+            <td>249 zł</td>
+            <td>Szkolenie wstępne, 30 min jazdy, opieka instruktora, do 2 osób towarzyszących</td>
+            <td>Dla 1 osoby (min. wiek 12 lat)</td>
+          </tr>
+          <tr>
+            <td>60 minut</td>
+            <td>299 zł</td>
+            <td>Szkolenie wstępne, 60 min jazdy, opieka instruktora, do 3 osób towarzyszacych</td>
+            <td>Dla 1-2 osób (min. wiek 12 lat)</td>
+          </tr>
+          <tr>
+            <td>90 minut</td>
+            <td>349 zł</td>
+            <td>Szkolenie wstępne, 90 min jazdy, opieka instruktora, do 3 osób towarzyszących</td>
+            <td>Dla 1-2 osób (min. wiek 12 lat)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section><br><br>
+
+    <section id="jak-wyglada-jazda">
+      <h2>JAK TO DZIAŁA</h2>
+      <ol>
+        <li>Wybierz pakiet i termin jazdy</li>
+        <li>Opłać rezerwację online (Przelewy 24)</li>
+        <li>Odbierz potwierdzenie e-mail</li>
+        <li>Przyjeź do nas w Katowicach i przeżyj niezapomnianą przygodę</li>
+      </ol>
+    </section>
+
+    <section id="opinie-uczestnikow">
+      <h2>Opinie uczestników</h2>
+      <article><p>„Emocje jak na prawdziwej lokomotywie! Instruktorzy super, polecam każemu!”</p><p>- Michał, Katowice</p></article>
+      <article><p>„Świetna zabawa, realizm 10/10. Mój syn był zachwycony”</p><p>- Anna, Chorzów</p></article>
+      <article><p>„Super! polecam, najlepszy słoń na torach haha”</p><p> - Kacper, Mysłowice</p></article>
+      <article><p>„Bardzo fajne, świetna atrakcja, super panowie prowadzący!!!”</p><p>- Ania Kęmpka</p></article>
+    </section>
+
+    <section id="rezerwacja" aria-labelledby="rezerwacja-title">
+      <h2 id="rezerwacja-title" class="sr-only">Rezerwacja</h2>
+      <div class="rezerwacja-wrapper">
+        <div class="calendar-panel" id="calendarColumn">
+          <div class="calendar-header">
+            <button id="calPrev" type="button" aria-label="Poprzedni miesiąc">&lt;</button>
+            <div id="calendarLabel" aria-live="polite">Listopad 2025</div>
+            <button id="calNext" type="button" aria-label="Następny miesiąc">&gt;</button>
+          </div>
+          <div id="calendarContainer" class="calendar-grid" role="grid" aria-label="Kalendarz miesięczny">
+            <div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div>
+          </div>
+          <div class="slots-panel" style="margin-top:12px;">
+            <h3 style="margin-bottom:8px;color:var(--muted)">Godziny dostępne w wybranym dniu</h3>
+            <div id="slotsContainer" class="slots-grid" aria-live="polite">
+
+            </div>
+          </div>
+        </div>
+        <aside class="booking-panel" id="bookingColumn">
+          <form id="bookingForm" method="post" action="api/create-booking.php" novalidate>
+            <div class="form-row">
+              <label for="duration">Długość jazdy</label>
+              <select id="duration" name="duration" required>
+                <option value="30" data-price="299">30 minut — 299 zł</option>
+                <option value="60" data-price="399">60 minut — 399 zł</option>
+                <option value="90" data-price="499">90 minut — 499 zł</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="firstName">Imię *</label>
+              <input type="text" id="firstName" name="firstName" required placeholder="Imię">
+              <label for="lastName">Nazwisko *</label>
+              <input type="text" id="lastName" name="lastName" required placeholder="Nazwisko">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="email" required placeholder="twoj@adres.pl">
+              <label for="phone">Telefon *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="+48 600 000 000">
+            </div>
+            <div class="form-row">
+              <label for="participants">Liczba uczestników</label>
+              <input type="number" id="participants" name="participants" min="1" value="1" required>
+            </div>
+            <div class="form-row">
+              <label for="datePicker">Wybrana data</label>
+              <input id="datePicker" name="date" type="date" aria-controls="slotsContainer" required />
+            </div>
+            <div class="form-row">
+              <label for="voucher">Kod rabatowy</label>
+              <div style="display:flex;gap:8px;">
+                <input type="text" id="voucher" name="voucher" placeholder="Wpisz kod promocyjny" autocomplete="off" style="flex:1;">
+                <button type="button" id="applyVoucherBtn" class="slot available">Zastosuj</button>
+              </div>
+              <div id="voucherFeedback" aria-live="polite" style="margin-top:6px;color:var(--muted)"></div>
+            </div>
+            <div class="form-row">
+              <label for="timePicker">Wybrana godzina</label>
+              <input type="time" id="timePicker" name="time" min="08:00" max="20:00" required>
+            </div>
+            <input type="hidden" name="final_amount_grosze" id="final_amount_grosze" value="">
+            <input type="hidden" name="applied_voucher" id="applied_voucher" value="">
+            <input type="hidden" name="slot_id" id="slot_id" value="">
+            <div class="form-row" style="margin-top:6px;">
+              <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="gdpr" name="gdpr" required> Znam zasady <a href="Rodo.html" style="color: var(--accent); margin-left:8px;">RODO</a></label>
+            </div>
+            <div class="form-row pay-wrap">
+              <a href="https://sandbox.przelewy24.pl" target="_blank" class="btn" id="payBtn">Przejdź do płatności</a>
+            </div>
+          </form>
+          <div class="booking-summary" aria-live="polite" style="margin-top:12px">
+            <div class="row"><div>Wybrana długość:</div><div id="summaryDuration">30 min</div></div>
+            <div class="row"><div>Wybrana data:</div><div id="summaryDate">—</div></div>
+            <div class="row"><div>Wybrany czas:</div><div id="summaryTime">—</div></div>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+            <div class="row total"><div>Do zapłaty:</div><div id="summaryPrice">199 zł</div></div>
+            <div style="font-size:12px;color:var(--muted);margin-top:10px">Po kliknięciu „Przejdź do płatności” zostaniesz przekierowany do Przelewy24.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <h2>Odwiedź nas w Katowicach</h2>
+      <p>
+        Symulator znajduje się w profesjonalnym ośrodku szkoleniowym KG Rail.<br>
+        <b>Adres:</b> ul. Słoneczna 4 lok. B/4, 40-135 Katowice<br>
+        <b>Parking w cenie vouchera</b><br>
+        <b>Dojazd komunikacją miejską - 1 min od przystanku</b><br>
+        <b>Katowice Jesionowa.</b><br><br>
+      </p>
+      <div class="map-wrapper" aria-hidden="false">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2344.032445144916!2d19.02008967628629!3d50.27545447155922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716cf0ee0df5abf%3A0x57f1af9e15718739!2sKG%20Rail%20sp.%20z%20o.o.!5e1!3m2!1spl!2sjp!4v1761863172329!5m2!1spl!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa - KG Rail"></iframe>
+      </div>
+    </section>
+
+  </main>
+  <footer>
+    <h2>KONTAKT</h2>
+    <b>Masz pytania?</b><br>
+    <p>Zadzwoń: <a href="tel:+48606175220"><b>+48 606 175 220</b></a></p>
+    <p>Napisz: <a href="mailto:symulator@kgrail.pl">symulator@kgrail.pl</a></p><br>
+    <p>Godziny otwarcia:</p>
+    <p>Pon.-Pt. 9:00-20:00</p>
+    <p>Sob.-Nd. 14:00-21:00</p><br><br>
+    <p style="text-align: center; margin-top: 2px;">&copy; KG Rail sp. z o.o.</p>
+  </footer>
+  <script src="assets/js/calendar.js" defer></script>
+  <script src="assets/js/booking.js" defer></script>
+  <script src="assets/js/payment.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/wyswietlanie-ceny.js" defer></script>
+</body>
+</html>

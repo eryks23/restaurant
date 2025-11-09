@@ -1,0 +1,179 @@
+<!-- Filename: booking-confirmation.html -->
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Potwierdzenie rezerwacji — Vectron UTK SIM — {{booking_code}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    /* Minimalne resetowanie dla e-maili */
+    img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display:block; }
+    a { color: inherit; text-decoration: none; }
+    body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color:#f4f6f8; }
+    table { border-collapse: collapse !important; }
+    /* Mobile */
+    @media only screen and (max-width: 620px) {
+      .container { width: 100% !important; padding: 10px !important; }
+      .stack { display: block !important; width: 100% !important; }
+      .center { text-align: center !important; }
+      .btn { width: 100% !important; box-sizing: border-box; }
+    }
+  </style>
+</head>
+<body style="background-color:#f4f6f8; margin:0; padding:0;">
+  <!-- preheader (hidden but shown in inbox preview) -->
+  <div style="display:none; max-height:0px; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#ffffff;">
+    Potwierdzenie rezerwacji — Vectron UTK SIM — {{booking_code}} • {{date}}
+  </div>
+
+  <!-- Main wrapper -->
+  <table width="100%" cellpadding="0" cellspacing="0" role="presentation" aria-hidden="true">
+    <tr>
+      <td align="center" style="padding:20px 10px;">
+        <!-- Container -->
+        <table class="container" width="600" cellpadding="0" cellspacing="0" role="presentation" style="width:600px; max-width:600px; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+          
+          <!-- Header with logo -->
+          <tr>
+            <td style="padding:20px; background:#1f2937;">
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                <tr>
+                  <td style="vertical-align:middle;">
+                    <!-- Logo: zastąp src przez prawdziwy URL -->
+                    <img src="{{logo_url}}" alt="Vectron UTK SIM — logo" width="160" style="display:block; height:auto;">
+                  </td>
+                  <td align="right" style="color:#ffffff; font-family:Arial, sans-serif; font-size:16px;">
+                    <strong>Twoja rezerwacja została przyjęta</strong>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Body / Greeting -->
+          <tr>
+            <td style="padding:24px; font-family:Arial, sans-serif; color:#333333; font-size:15px; line-height:1.5;">
+              <p style="margin:0 0 12px 0;">Cześć <strong>{{first_name}} {{last_name}}</strong>,</p>
+
+              <p style="margin:0 0 12px 0;">
+                Dziękujemy — Twoja rezerwacja na symulator Vectron UTK SIM została pomyślnie przyjęta. Poniżej znajdziesz najważniejsze informacje dotyczące rezerwacji.
+              </p>
+
+              <!-- Booking summary card -->
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin:16px 0; border:1px solid #e6e9ee; border-radius:6px;">
+                <tr>
+                  <td style="padding:14px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td style="font-family:Arial, sans-serif; color:#666666; font-size:13px; width:38%;">Numer rezerwacji:</td>
+                        <td style="font-family:Arial, sans-serif; color:#111111; font-size:13px;"><strong>{{booking_code}}</strong></td>
+                      </tr>
+                      <tr><td style="height:8px;"></td></tr>
+                      <tr>
+                        <td style="font-family:Arial, sans-serif; color:#666666; font-size:13px;">Data i godzina:</td>
+                        <td style="font-family:Arial, sans-serif; color:#111111; font-size:13px;"><strong>{{date}}</strong></td>
+                      </tr>
+                      <tr><td style="height:8px;"></td></tr>
+                      <tr>
+                        <td style="font-family:Arial, sans-serif; color:#666666; font-size:13px;">Czas trwania:</td>
+                        <td style="font-family:Arial, sans-serif; color:#111111; font-size:13px;"><strong>{{duration}}</strong></td>
+                      </tr>
+                      <tr><td style="height:8px;"></td></tr>
+                      <tr>
+                        <td style="font-family:Arial, sans-serif; color:#666666; font-size:13px;">Cena:</td>
+                        <td style="font-family:Arial, sans-serif; color:#111111; font-size:13px;"><strong>{{price}}</strong></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Instructions -->
+              <h3 style="font-family:Arial, sans-serif; color:#0b74de; margin:0 0 8px 0; font-size:16px;">Instrukcje</h3>
+              <p style="margin:0 0 12px 0; color:#444444; font-size:14px;">
+                {{instructions}}<br>
+                Prosimy o przybycie minimum <strong>15 minut wcześniej</strong>, aby dopełnić formalności i przygotować wszystko przed rozpoczęciem jazdy.
+              </p>
+
+              <!-- Voucher button -->
+              <table cellpadding="0" cellspacing="0" role="presentation" style="margin:16px 0;">
+                <tr>
+                  <td align="left">
+                    <a href="{{voucher_url}}" target="_blank" class="btn" style="display:inline-block; padding:12px 20px; border-radius:6px; background:#0b74de; color:#ffffff; font-family:Arial, sans-serif; font-size:15px; font-weight:600; text-decoration:none;">
+                      Pobierz voucher / PDF
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top:8px; color:#777777; font-size:12px; font-family:Arial, sans-serif;">
+                    Link do vouchera jest zabezpieczony i ważny przez <strong>{{voucher_validity_hours}}</strong> godzin. Jeśli link nie działa, skontaktuj się z obsługą.
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Additional notes -->
+              <p style="margin:12px 0 6px 0; color:#666666; font-size:13px;">
+                Jeśli potrzebujesz zmienić rezerwację lub masz pytania, skontaktuj się z nami — dane kontaktowe administracji poniżej.
+              </p>
+
+              <hr style="border:none; border-top:1px solid #e6e9ee; margin:18px 0;">
+
+              <!-- Contact / Admin info -->
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                <tr>
+                  <td style="font-family:Arial, sans-serif; color:#666666; font-size:13px; vertical-align:top; width:60%;">
+                    <strong>Kontakt administracji</strong><br>
+                    Email: <a href="mailto:symulator@kgrail.pl" style="color:#0b74de;">symulator@kgrail.pl</a><br>
+                    Telefon: <a href="tel:+48606175220" style="color:#0b74de;">+48 606 175 220</a><br>
+                    Adres: KG Rail sp. z o.o., ul. Słoneczna 4/B/4, 40-135 Katowice
+                  </td>
+                  <td align="right" style="font-family:Arial, sans-serif; color:#666666; font-size:13px; vertical-align:top;">
+                    <!-- Unsubscribe (opcjonalne dla powiadomień marketingowych) -->
+                    <a href="{{unsubscribe_url}}" style="color:#999999; font-size:12px;">Wypisz się z powiadomień</a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer with company info -->
+          <tr>
+            <td style="background:#fafbfc; padding:18px; font-family:Arial, sans-serif; font-size:12px; color:#7a7f87;">
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                <tr>
+                  <td style="vertical-align:top;">
+                    <strong>KG Rail sp. z o.o.</strong><br>
+                    ul. Słoneczna 4/B/4, 40-135 Katowice<br>
+                    NIP: {{company_nip}} <!-- opcjonalnie -->
+                  </td>
+                  <td align="right" style="vertical-align:top;">
+                    <a href="{{privacy_policy_url}}" style="color:#0b74de; font-size:12px;">Polityka prywatności</a><br>
+                    <span style="color:#999999; font-size:11px;">&copy; {{current_year}} KG Rail sp. z o.o.</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-top:12px; color:#999999; font-size:11px;">
+                    Przetwarzamy dane osobowe w celu realizacji rezerwacji zgodnie z <a href="{{privacy_policy_url}}" style="color:#0b74de;">Polityką prywatności</a>. Jeśli chcesz skorygować lub usunąć swoje dane, skontaktuj się: <a href="mailto:symulator@kgrail.pl" style="color:#0b74de;">symulator@kgrail.pl</a>.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+        <!-- End container -->
+      </td>
+    </tr>
+  </table>
+
+  <!-- Fallback plaintext / microdata (some systems show as preview) -->
+  <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+    <tr>
+      <td style="padding:6px 12px; text-align:center; font-family:Arial, sans-serif; font-size:11px; color:#b0b7be;">
+        Potwierdzenie rezerwacji — Numer: {{booking_code}} • Data: {{date}} • Pobierz voucher: {{voucher_url}}
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

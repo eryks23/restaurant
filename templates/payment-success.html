@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Płatność zrealizowana — {BOOKING_CODE}</title>
+  <style>
+    body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; background:#f4f5f7; margin:0; padding:20px; }
+    .card { max-width:600px; margin:0 auto; background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,0.08); }
+    .header { background:#0f172a; color:#fff; padding:20px; text-align:center; }
+    .content { padding:24px; color:#111827; }
+    h1{ margin:0 0 12px; font-size:20px; }
+    p{ margin:0 0 12px; line-height:1.5; }
+    .muted{ color:#6b7280; font-size:13px; }
+    .btn { display:inline-block; text-decoration:none; padding:10px 16px; border-radius:6px; background:#10b981; color:#fff; font-weight:600; }
+    .details{ background:#f8fafc; padding:12px; border-radius:6px; margin-top:12px; font-size:14px; }
+    .footer { padding:16px; font-size:13px; color:#6b7280; background:#fafafa; text-align:center; }
+    a.inline{ color:inherit; text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="card" role="article" aria-label="Potwierdzenie płatności">
+    <div class="header">
+      <strong>Płatność zrealizowana</strong>
+      <div style="font-size:12px; margin-top:6px; opacity:0.9;">Numer rezerwacji: <strong>{BOOKING_CODE}</strong></div>
+    </div>
+
+    <div class="content">
+      <h1>Dziękujemy — rezerwacja opłacona</h1>
+      <p>Twoja płatność dla rezerwacji <strong>{BOOKING_CODE}</strong> została pomyślnie zrealizowana.</p>
+
+      <div class="details">
+        <div><strong>Imię i nazwisko:</strong> {CUSTOMER_NAME}</div>
+        <div><strong>Data i godzina:</strong> {BOOKING_DATETIME}</div>
+        <div><strong>Czas jazdy:</strong> {DURATION} minut</div>
+        <div><strong>Kwota:</strong> {AMOUNT} PLN</div>
+      </div>
+
+      <p>W załączeniu znajdziesz voucher / potwierdzenie rezerwacji do wydruku. Możesz też pobrać je klikając przycisk poniżej.</p>
+
+      <p style="margin-top:14px;">
+        <a href="{DOWNLOAD_VOUCHER_URL}" class="btn" target="_blank" rel="noopener">Pobierz voucher / potwierdzenie</a>
+      </p>
+
+      <hr style="border:none;border-top:1px solid #eef2ff;margin:18px 0;" />
+
+      <p class="muted">Jeśli masz pytania, skontaktuj się z obsługą: <a href="mailto:{SUPPORT_EMAIL}" class="inline">{SUPPORT_EMAIL}</a> • tel: {SUPPORT_PHONE}</p>
+    </div>
+
+    <div class="footer">
+      <div>{COMPANY_NAME} • {COMPANY_ADDRESS}</div>
+      <div style="margin-top:6px;"><a href="{TERMS_URL}" class="inline" target="_blank" rel="noopener">Regulamin jazd</a> · <a href="{PRIVACY_URL}" class="inline" target="_blank" rel="noopener">Polityka prywatności</a></div>
+      <div style="margin-top:8px;" class="muted">© {CURRENT_YEAR} {COMPANY_NAME}. Dane przetwarzamy zgodnie z polityką prywatności.</div>
+    </div>
+  </div>
+</body>
+</html>

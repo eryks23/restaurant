@@ -1,0 +1,127 @@
+<!--
+Subject: Nowa rezerwacja — {{BOOKING_CODE}}
+Note: Upewnij się, że {ADMIN_PANEL_URL}/bookings/{BOOKING_ID} wymaga autoryzacji.
+-->
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nowa rezerwacja — {{BOOKING_CODE}}</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f6f7fb; margin: 0; padding: 24px; }
+    .email-card { max-width: 720px; margin: 0 auto; background: #ffffff; border-radius: 8px; box-shadow: 0 6px 18px rgba(20,20,40,0.06); padding: 20px; }
+    h1 { font-size: 20px; margin: 0 0 12px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    td { padding: 8px 6px; vertical-align: top; }
+    .label { color: #6b7280; width: 190px; font-weight: 700; font-size:13px; }
+    .value { color: #111827; font-size:13px; }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+    .btn-admin { background: #1f2937; color: #fff; }
+    .btn-pdf { background:#10b981; color:#fff; margin-left:8px; }
+    .status-paid { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #10b981; color: #fff; font-weight:700; }
+    .status-pending { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #f59e0b; color: #fff; font-weight:700; }
+    .status-cancelled { display:inline-block; padding:6px 10px; border-radius:999px; background:#ef4444; color:#fff; font-weight:700; }
+    .muted { color: #6b7280; font-size: 13px; margin-top: 12px; }
+    .footer { margin-top: 18px; font-size: 13px; color: #6b7280; }
+    @media (max-width:480px){ .label{width:120px;} .email-card{padding:12px;} }
+  </style>
+</head>
+<body>
+  <div class="email-card">
+    <h1>Nowa rezerwacja — {{BOOKING_CODE}}</h1>
+
+    <p class="muted">Nowa rezerwacja przyjęta. Kliknij, aby otworzyć szczegóły w panelu administracyjnym.</p>
+
+    <table role="presentation">
+      <tr>
+        <td class="label">Klient</td>
+        <td class="value">{{CUSTOMER_NAME}} <br><a href="mailto:{{CUSTOMER_EMAIL}}">{{CUSTOMER_EMAIL}}</a> • {{CUSTOMER_PHONE}}</td>
+      </tr>
+
+      <tr>
+        <td class="label">Numer rezerwacji</td>
+        <td class="value"><strong>{{BOOKING_CODE}}</strong> • ID: {{BOOKING_ID}}</td>
+      </tr>
+
+      <tr>
+        <td class="label">Data / slot</td>
+        <td class="value">{{SLOT_DATE}} • {{SLOT_START}} — {{SLOT_END}} (strefa czasowa: {{TIMEZONE}})</td>
+      </tr>
+
+      <tr>
+        <td class="label">Czas trwania</td>
+        <td class="value">{{DURATION}} minut</td>
+      </tr>
+
+      <tr>
+        <td class="label">Uczestnicy</td>
+        <td class="value">{{PARTICIPANTS}} (np. liczba osób)</td>
+      </tr>
+
+      <tr>
+        <td class="label">Cena</td>
+        <td class="value">{{PRICE}} {{CURRENCY}} (kod rabatowy: {{PROMO_CODE}})</td>
+      </tr>
+
+      <tr>
+        <td class="label">Status płatności</td>
+        <td class="value">
+          <!-- Zmapuj statusy po stronie serwera: 
+               pending_payment -> status-pending
+               paid -> status-paid
+               cancelled -> status-cancelled
+               refunded -> status-refunded
+          -->
+          <span class="status-{{STATUS_CLASS}}">{{STATUS_DISPLAY}}</span>
+          <div style="margin-top:6px; color:#6b7280; font-size:13px;">(możliwe: pending_payment / paid / cancelled / refunded)</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="label">Płatność (operator)</td>
+        <td class="value">{{PAYMENT_METHOD}} • Transakcja: {{P24_TRANSACTION_ID}} • <a href="{{PAYMENT_URL}}" target="_blank" rel="noopener">Przejdź do transakcji</a></td>
+      </tr>
+
+      <tr>
+        <td class="label">Voucher / kod</td>
+        <td class="value">{{VOUCHER_CODE}} • <a href="{{VOUCHER_URL}}" target="_blank" rel="noopener">Pobierz voucher (admin)</a></td>
+      </tr>
+
+      <tr>
+        <td class="label">Notatki / preferencje</td>
+        <td class="value">{{NOTES}}</td>
+      </tr>
+
+      <tr>
+        <td class="label">Utworzono</td>
+        <td class="value">{{BOOKING_CREATED_AT}}</td>
+      </tr>
+    </table>
+
+    <p style="margin-top:18px;">
+      <a class="btn btn-admin" href="{{ADMIN_PANEL_URL}}/bookings/{{BOOKING_ID}}" target="_blank" rel="noopener">Otwórz rezerwację w panelu admina</a>
+      <!-- link do szybkiego eksportu PDF -->
+      <a class="btn btn-pdf" href="{{EXPORT_PDF_URL}}" target="_blank" rel="noopener">Pobierz PDF (export)</a>
+    </p>
+
+    <p class="footer"><strong>Instrukcja:</strong> Jeśli status = <em>pending_payment</em>, sprawdź transakcję w panelu Przelewy24 (ID: {{P24_TRANSACTION_ID}}) i zaktualizuj status w panelu admina.</p>
+
+    <hr style="border:none;border-top:1px solid #eef2f7;margin:18px 0;">
+    <p class="muted">ID rezerwacji: {{BOOKING_ID}} • Kod rezerwacji: {{BOOKING_CODE}}</p>
+
+    <p style="font-size:12px;color:#999;margin-top:12px;">
+      Uwaga: nie zawieraj w tym mailu danych karty płatniczej. Linki do panelu admina powinny wymagać logowania. Dane osobowe przetwarzamy zgodnie z polityką prywatności.
+    </p>
+  </div>
+
+  <!-- Plain-text fallback for simple clients -->
+  <div style="display:none;white-space:pre-wrap;font-family:monospace;">
+Nowa rezerwacja: {{BOOKING_CODE}}
+Klient: {{CUSTOMER_NAME}} ({{CUSTOMER_EMAIL}}) {{CUSTOMER_PHONE}}
+Data: {{SLOT_DATE}} {{SLOT_START}}-{{SLOT_END}} TZ: {{TIMEZONE}}
+Cena: {{PRICE}} {{CURRENCY}}  Status płatności: {{STATUS_DISPLAY}}
+Panel admina: {{ADMIN_PANEL_URL}}/bookings/{{BOOKING_ID}}
+  </div>
+</body>
+</html>

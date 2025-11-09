@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie i Rejestracja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --bg: #333; /* Ciemne tło */
+    --button: #6bdc63; /* Zielony */
+    --text: white;
+    --border-radius: 12px;
+    --input-bg: #f1f1f1;
+    --input-border: #ccc;
+    --shadow: rgba(0, 0, 0, 0.2);
+    --primary-font: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--primary-font);
+    background: linear-gradient(135deg, #2e2e2e, #1c1c1c); /* Gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.form-container {
+    background-color: white;
+    padding: 40px 40px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 20px var(--shadow);
+    width: 100%;
+    max-width: 380px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    background-color: var(--input-bg);
+    font-size: 16px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--button);
+    outline: none;
+    background-color: #fff;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--button);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.social-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #db4437;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: #c1351d;
+    transform: translateY(-3px);
+}
+
+.social-btn:active {
+    transform: translateY(1px);
+}
+
+.toggle-links {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.toggle-links a {
+    color: var(--button);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.toggle-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        padding: 30px 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .input-group input {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .btn, .social-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container" id="login-form">
+        <h2>Logowanie</h2>
+        <form action="login.php" method="POST">
+            <div class="input-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="login-password">Hasło</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Zaloguj się</button>
+        </form>
+        <div class="toggle-links">
+            <a href="javascript:void(0);" onclick="toggleForm()">Nie masz konta? Zarejestruj się</a>
+        </div>
+    </div>
+
+    <div class="form-container" id="register-form" style="display: none;">
+        <h2>Rejestracja</h2>
+        <form action="register.php" method="POST">
+            <div class="input-group">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="register-name">Imię</label>
+                <input type="text" id="register-name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="register-password">Hasło</label>
+                <input type="password" id="register-password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="register-confirm-password">Potwierdź hasło</label>
+                <input type="password" id="register-confirm-password" name="confirm_password" required>
+            </div>
+            <button type="submit" class="btn">Zarejestruj się</button>
+        </form>
+        <div class="toggle-links">
+            <a href="javascript:void(0);" onclick="toggleForm()">Masz już konto? Zaloguj się</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const loginForm = document.getElementById("login-form");
+            const registerForm = document.getElementById("register-form");
+
+            if (loginForm.style.display === "none") {
+                loginForm.style.display = "block";
+                registerForm.style.display = "none";
+            } else {
+                loginForm.style.display = "none";
+                registerForm.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

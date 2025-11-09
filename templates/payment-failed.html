@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Płatność nie powiodła się — {BOOKING_CODE}</title>
+  <style>
+    /* Proste style przyjazne do maili */
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f4f5f7; margin: 0; padding: 20px; }
+    .email-wrapper { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+    .header { padding: 20px; text-align: center; background: #1f2937; color: #fff; }
+    .logo { max-height: 42px; display:block; margin: 0 auto 8px; }
+    .content { padding: 24px; color: #111827; }
+    h1 { font-size: 20px; margin: 0 0 12px; }
+    p { margin: 0 0 12px; line-height: 1.5; }
+    .reason-list { margin: 8px 0 16px; padding-left: 18px; }
+    .button { display: inline-block; padding: 12px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+    .btn-primary { background: #2563eb; color: #ffffff; }
+    .muted { color: #6b7280; font-size: 13px; }
+    .footer { padding: 16px 24px; font-size: 13px; color: #6b7280; background: #fafafa; }
+    .links { margin-top:6px; }
+    a.inline { color: #2563eb; text-decoration: none; }
+    @media (max-width: 480px) { .content { padding: 16px; } }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper" role="article" aria-label="Płatność nie powiodła się">
+    <div class="header">
+      <!-- Opcjonalnie wstawić logo, albo zostawić tekst -->
+      <!-- <img src="{LOGO_URL}" alt="Symulator Vectron - Logo" class="logo" /> -->
+      <strong>Płatność nie powiodła się</strong>
+      <div style="font-size:12px; margin-top:6px; opacity:0.9;">Numer rezerwacji: <strong>{BOOKING_CODE}</strong></div>
+    </div>
+
+    <div class="content">
+      <h1>Płatność nie została zrealizowana</h1>
+      <p>Dziękujemy za skorzystanie z rezerwacji jazdy na symulatorze Vectron UTK SIM. Niestety nie udało się przetworzyć płatności dla rezerwacji <strong>{BOOKING_CODE}</strong>.</p>
+
+      <p>Możliwe przyczyny:</p>
+      <ul class="reason-list">
+        <li>Brak środków na karcie</li>
+        <li>Wygaśnięcie karty lub odrzucony przelew</li>
+        <li>Błąd techniczny po stronie operatora płatności</li>
+      </ul>
+
+      <p>Aby dokończyć rezerwację masz kilka opcji:</p>
+      <p>
+        <a href="{RETRY_PAYMENT_URL}" class="button btn-primary" target="_blank" rel="noopener">Spróbuj ponownie zapłacić</a>
+      </p>
+
+      <p class="muted">Uwaga: link do ponowienia płatności jest jednorazowy i ważny przez ograniczony czas. Jeśli link nie działa, skontaktuj się z obsługą.</p>
+
+      <p>Jeśli potrzebujesz instrukcji krok po kroku, jak powtórzyć płatność, odwiedź tę stronę:</p>
+      <p><a href="{PAYMENT_INSTRUCTIONS_URL}" class="inline" target="_blank" rel="noopener">Instrukcja ponowienia płatności</a></p>
+
+      <hr style="border:none;border-top:1px solid #eef2ff;margin:18px 0;" />
+
+      <p>Jeżeli problem będzie się powtarzał lub potrzebujesz pomocy, skontaktuj się z naszym działem obsługi klienta:</p>
+      <p class="muted">
+        E-mail: <a href="mailto:{SUPPORT_EMAIL}" class="inline">{SUPPORT_EMAIL}</a><br/>
+        Telefon: {SUPPORT_PHONE}<br/>
+        Czat/Support: <a href="{SUPPORT_URL}" class="inline" target="_blank" rel="noopener">{SUPPORT_URL}</a>
+      </p>
+
+      <p class="muted">Jeśli nie próbowałeś(aś) dokonywać tej płatności i podejrzewasz nieautoryzowaną aktywność, skontaktuj się z nami natychmiast.</p>
+    </div>
+
+    <div class="footer">
+      <div>Numer rezerwacji: <strong>{BOOKING_CODE}</strong></div>
+      <div class="links" style="margin-top:8px;">
+        <a href="{TERMS_URL}" class="inline" target="_blank" rel="noopener">Regulamin jazd</a> ·
+        <a href="{PRIVACY_URL}" class="inline" target="_blank" rel="noopener">Polityka prywatności</a>
+      </div>
+
+      <div style="margin-top:8px;">© {CURRENT_YEAR} KG Rail sp. z o.o. • ul. Słoneczna 4/B/4, 40-135 Katowice</div>
+
+      <!-- Opcjonalnie: mała linijka informująca o przetwarzaniu danych -->
+      <div style="margin-top:6px;" class="muted">Przetwarzamy Twoje dane osobowe w celu obsługi rezerwacji zgodnie z naszą <a href="{PRIVACY_URL}" class="inline">polityką prywatności</a>.</div>
+    </div>
+  </div>
+</body>
+</html>
