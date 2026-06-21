@@ -411,11 +411,8 @@ There is no `CONTRIBUTING.md` or coding-style configuration in this repository y
 ## Contact / Author
 
 - Repository: <https://github.com/eryks23/restaurant>
-- Maintainer: GitHub [@eryks23](https://github.com/eryks23) (per repository ownership)
-- [DO UZUPEŁNIENIA: contact email / business name for support inquiries]
+- Author: GitHub [@eryks23](https://github.com/eryks23)
 
 ## License
 
 This project is licensed under the MIT License — see [LICENSE](LICENSE) for the full text.
-
-> [DO UZUPEŁNIENIA] MIT was chosen here as a permissive default, not specified in the source. Given this application handles customer personal data and live payment credentials, confirm whether MIT is actually appropriate for your intended distribution model (open-source vs. private/commercial use) before publishing the repository.
