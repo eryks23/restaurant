@@ -1,0 +1,3 @@
+# Dependencies for the optional static-preview server (serwer.py).
+# Not required if you run the PHP application directly (see README → Installation).
+Flask>=3.0,<4.0
