@@ -53,7 +53,6 @@ This project is a PHP/MySQL web application for taking online reservations for a
 
 - PHP **8.0 or later** (the code uses `str_starts_with()` / `str_contains()`, which require PHP 8.0+), with the `pdo_mysql`, `mysqli`, `mbstring`, `openssl`, `curl`, and `json` extensions enabled.
 - MySQL **5.7+** or MariaDB **10.2+** (the schema in `database.sql` uses `JSON` columns and `SIGNAL`, which need these minimum versions).
-- [Composer](https://getcomposer.org/) — required only if you wire up the email (`includes/mailer.php`, `includes/smtp.php`) or PDF (`includes/pdf_helper.php`) features, since they depend on PHPMailer and Dompdf, which are **not** bundled in this repository.
 - A web server capable of running PHP (Apache/Nginx + PHP-FPM, or PHP's built-in server for local development).
 - A Przelewy24 merchant account (sandbox is sufficient for development) if you intend to test the payment flow.
 - An SMTP account if you intend to test outgoing email.
